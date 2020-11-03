@@ -1,7 +1,7 @@
 # -*- codeing = utf-8 -*-
 # @Time     : 11/3 9:58
 # @Author   : River
-# @File     : common.py
+# @File     : Common.py
 # @Software : PyCharm
 
 import requests

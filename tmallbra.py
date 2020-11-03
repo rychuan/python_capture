@@ -10,7 +10,7 @@ import json
 import re
 import pymysql
 
-common = Common()
+common = Common
 
 # 获取商品id
 def getProductIdList():

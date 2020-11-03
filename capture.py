@@ -4,7 +4,7 @@
 # @File     : capture.py
 # @Software : PyCharm
 
-import common
+import Common
 import tmallbra
 from bs4 import BeautifulSoup
 import json
@@ -14,7 +14,7 @@ def getCommentDetail(itemId,currentPage):
     url = 'https://rate.tmall.com/list_detail_rate.htm?itemId=' + str(
         itemId) + '&sellerId=2451699564&order=3&currentPage=' + str(currentPage) + '&append=0callback=jsonp336'
     # itemId 产品id ；sellerId 店铺id 字段必须有值，但随意值就行
-    html = common.getUrlContent(url)  # 获取网页信息
+    html = Common.getUrlContent(url)  # 获取网页信息
     # 删掉返回的多余信息
     html = html.replace('jsonp128(','') #需要确定是不是 jsonp128
     html = html.replace(')','')
@@ -33,7 +33,7 @@ def getLastPage(itemId):
 # 获取商品id
 def getProductIdList():
     url = 'https://list.tmall.com/search_product.htm?q=内衣' # q参数 是查询的关键字
-    html = common.getUrlContent(url)  # 获取网页信息
+    html = Common.getUrlContent(url)  # 获取网页信息
     soup = BeautifulSoup(html,'html.parser')
     idList = []
     # 用Beautiful Soup提取商品页面中所有的商品ID
@@ -74,7 +74,7 @@ if __name__ == '__main__':
                         n += 1
                     print(num)
                     sql = "insert into bras(bra_id, bra_color, bra_size, resource, comment, comment_time)  value(null, %s, %s, %s, %s, %s)"
-                    common.patchInsertData(sql, commentList) # mysql操作的批量插入
+                    Common.patchInsertData(sql, commentList) # mysql操作的批量插入
                     num += 1
                 except Exception as e:
                     num += 1
